@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HappyJourney - Premium Travels & Tourism
+
+HappyJourney is a premium travel & tourism company website built with Next.js (App Router), Tailwind CSS, and Framer Motion. This project features a clean, luxury design with responsive layouts and smooth animations.
+
+## Tech Stack
+
+- **Next.js**: 15+ (App Router)
+- **Styling**: Tailwind CSS v4
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Fonts**: Inter (Sans), Poppins (Heading)
 
 ## Getting Started
 
-First, run the development server:
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- `src/app`: App Router pages (Home, About, Packages, Honeymoon, Cruises, Wedding, Careers, Contact).
+- `src/components/ui`: Reusable UI components (Button, Card).
+- `src/components/layout`: Layout components (Navbar, Footer).
+- `src/lib`: Utility functions.
+- `public/images`: Static assets.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Features
 
-## Learn More
+- **Responsive Design**: Mobile-first layout with sticky navbar and hamburger menu.
+- **Premium Aesthetics**: Brand colors (#2F5DA9, #4FC3D8), soft gradients, and modern typography.
+- **Interactive UI**: Hover effects, fade-in animations, and smooth scrolling.
+- **Dynamic Content**: Data-driven components for packages and destinations.
 
-To learn more about Next.js, take a look at the following resources:
+## Branding
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Primary Blue**: #2F5DA9
+- **Secondary Sky Blue**: #4FC3D8
+- **Light Aqua**: #A8E6F0
+- **Background**: White (#FFFFFF)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 HappyJourney. All rights reserved.
