@@ -21,7 +21,7 @@ const navLinks = [
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [hidden, setHidden] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
+    // Removed isScrolled logic
     const { scrollY } = useScroll();
     const pathname = usePathname();
 
@@ -32,7 +32,6 @@ export function Navbar() {
         } else {
             setHidden(false);
         }
-        setIsScrolled(latest > 50);
     });
 
     // Close mobile menu on route change
@@ -50,10 +49,7 @@ export function Navbar() {
                 animate={hidden ? "hidden" : "visible"}
                 transition={{ duration: 0.35, ease: "easeInOut" }}
                 className={cn(
-                    "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                    isScrolled
-                        ? "py-3 bg-white/90 backdrop-blur-lg shadow-sm border-b border-gray-100/50"
-                        : "py-6 bg-transparent"
+                    "fixed top-0 left-0 right-0 z-50 py-3 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100",
                 )}
             >
                 <div className="container mx-auto px-4 md:px-6">
@@ -62,20 +58,18 @@ export function Navbar() {
                         <Link href="/" className="relative z-50 group flex items-center gap-2">
                             <div className={cn(
                                 "h-10 w-10 rounded-xl flex items-center justify-center transition-colors shadow-lg",
-                                isScrolled ? "bg-primary-blue text-white" : "bg-white text-primary-blue"
+                                "bg-primary-blue text-white"
                             )}>
                                 <Globe size={24} />
                             </div>
                             <div className="flex flex-col">
                                 <span className={cn(
-                                    "text-xl font-bold font-heading leading-none transition-colors",
-                                    isScrolled ? "text-gray-900" : "text-white"
+                                    "text-xl font-bold font-heading leading-none transition-colors text-gray-900"
                                 )}>
                                     HappyJourney
                                 </span>
                                 <span className={cn(
-                                    "text-[10px] tracking-widest uppercase font-medium transition-colors opacity-80",
-                                    isScrolled ? "text-gray-500" : "text-gray-200"
+                                    "text-[10px] tracking-widest uppercase font-medium transition-colors opacity-80 text-gray-500"
                                 )}>
                                     Premium Travel
                                 </span>
@@ -83,7 +77,7 @@ export function Navbar() {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden lg:flex items-center gap-1 bg-white/5 backdrop-blur-sm p-1.5 rounded-full border border-white/10 shadow-lg">
+                        <div className="hidden lg:flex items-center gap-1 bg-gray-50/50 p-1.5 rounded-full border border-gray-100">
                             {navLinks.map((link) => {
                                 const isActive = pathname === link.href;
                                 return (
@@ -92,9 +86,9 @@ export function Navbar() {
                                         href={link.href}
                                         className={cn(
                                             "relative px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-1",
-                                            isScrolled
-                                                ? isActive ? "bg-primary-blue text-white shadow-md" : "text-gray-600 hover:bg-gray-100"
-                                                : isActive ? "bg-white text-primary-blue shadow-md" : "text-white hover:bg-white/20"
+                                            isActive
+                                                ? "bg-primary-blue text-white shadow-md"
+                                                : "text-gray-600 hover:bg-white hover:shadow-sm"
                                         )}
                                     >
                                         {link.name}
@@ -118,8 +112,7 @@ export function Navbar() {
                                     id="nav-plan-trip-btn"
                                     size="sm"
                                     className={cn(
-                                        "rounded-full px-6 shadow-lg shadow-blue-500/20",
-                                        isScrolled ? "" : "bg-white text-primary-blue hover:bg-blue-50"
+                                        "rounded-full px-6 shadow-lg shadow-blue-500/20 bg-primary-blue text-white hover:bg-blue-700"
                                     )}
                                 >
                                     Plan Trip <MoveRight size={16} className="ml-2" />
@@ -130,10 +123,8 @@ export function Navbar() {
                                 id="mobile-menu-toggle"
                                 onClick={() => setIsOpen(!isOpen)}
                                 className={cn(
-                                    "lg:hidden relative z-50 p-2 rounded-full transition-all duration-300",
-                                    isOpen
-                                        ? "bg-gray-100 text-gray-900 rotate-90"
-                                        : isScrolled ? "bg-gray-100 text-gray-900" : "bg-white/20 text-white hover:bg-white/30"
+                                    "lg:hidden relative z-50 p-2 rounded-full transition-all duration-300 bg-gray-100 text-gray-900",
+                                    isOpen && "rotate-90"
                                 )}
                             >
                                 {isOpen ? <X size={24} /> : <Menu size={24} />}
