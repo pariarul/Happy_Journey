@@ -7,6 +7,7 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-
 import { Menu, X, Phone, Globe, ChevronDown, MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const navLinks = [
     { name: "Home", href: "/" },
@@ -55,25 +56,15 @@ export function Navbar() {
                 <div className="container mx-auto px-4 md:px-6">
                     <div className="flex items-center justify-between">
                         {/* Logo */}
-                        <Link href="/" className="relative z-50 group flex items-center gap-2">
-                            <div className={cn(
-                                "h-10 w-10 rounded-xl flex items-center justify-center transition-colors shadow-lg",
-                                "bg-primary-blue text-white"
-                            )}>
-                                <Globe size={24} />
-                            </div>
-                            <div className="flex flex-col">
-                                <span className={cn(
-                                    "text-xl font-bold font-heading leading-none transition-colors text-gray-900"
-                                )}>
-                                    HappyJourney
-                                </span>
-                                <span className={cn(
-                                    "text-[10px] tracking-widest uppercase font-medium transition-colors opacity-80 text-gray-500"
-                                )}>
-                                    Premium Travel
-                                </span>
-                            </div>
+                        <Link href="/" className="relative z-50 flex items-center gap-2">
+                            <Image
+                                src="/full_logo.png"
+                                alt="Happy Journey Logo"
+                                width={160}
+                                height={50}
+                                priority
+                                className="h-auto w-auto object-contain"
+                            />
                         </Link>
 
                         {/* Desktop Navigation */}
@@ -108,7 +99,7 @@ export function Navbar() {
                         <div className="flex items-center gap-4">
                             <div className="hidden lg:block">
                                 <Button
-                                    href="/contact"
+                                    href="whatsapp://send?phone=9876543210"
                                     id="nav-plan-trip-btn"
                                     size="sm"
                                     className={cn(
