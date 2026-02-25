@@ -18,7 +18,7 @@ const weddingTypes = [
         title: "Royal Palace Weddings",
         destinations: ["Udaipur", "Jaipur", "Jodhpur"],
         desc: "A grand celebration in royal heritage locations.",
-        image: "https://images.unsplash.com/photo-1598460627255-bfa36ba59203?q=80&w=1000",
+        image: "/images/RoyalPalaceWeddings.jpg",
         icon: Crown
     },
     {
@@ -32,7 +32,7 @@ const weddingTypes = [
         title: "International Weddings",
         destinations: ["Thailand", "Dubai", "Sri Lanka"],
         desc: "Luxury weddings with global elegance.",
-        image: "https://images.unsplash.com/photo-1519225421980-715cb0202128?q=80&w=1000",
+        image: "/images/InternationalWeddings.jpeg",
         icon: Users // Generic icon for "world/people"
     }
 ];
@@ -181,7 +181,7 @@ export default function WeddingPage() {
                                 <Image src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1000" fill className="object-cover" alt="Wedding Couple" />
                             </div>
                             <div className="absolute bottom-0 left-0 w-3/4 h-3/4 bg-rose-200 rounded-[3rem] overflow-hidden shadow-xl z-10 -rotate-3 hover:rotate-0 transition-transform duration-700">
-                                <Image src="https://images.unsplash.com/photo-1532462283925-502a5fb121f6?q=80&w=1000" fill className="object-cover" alt="Wedding Decor" />
+                                <Image src="/images/WeddingDecor.jpg" fill className="object-cover" alt="Wedding Decor" />
                             </div>
                         </div>
                     </div>

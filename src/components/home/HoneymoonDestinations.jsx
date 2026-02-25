@@ -11,15 +11,15 @@ const domesticDestinations = [
   { name: "Goa", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1000", desc: "Sun-kissed beaches & vibrant nightlife." },
   { name: "Kerala", image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1000", desc: "Serene backwaters & lush greenery." },
   { name: "Shimla", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1000", desc: "Quaint colonial charm & mountain peaks." },
-  { name: "Kulu Manali", image: "https://images.unsplash.com/photo-1605649440417-0639e448375f?q=80&w=1000", desc: "Adventure and romance in the Himalayas." },
+  { name: "Kulu Manali", image: "/images/kullumanali.jpg", desc: "Adventure and romance in the Himalayas." },
   { name: "Andaman", image: "https://images.unsplash.com/photo-1589330273594-fade1ee91647?q=80&w=1000", desc: "Crystal clear waters & exotic islands." },
-  { name: "Himachal", image: "https://images.unsplash.com/photo-1563820641013-05b10077df3c?q=80&w=1000", desc: "Majestic mountains & peaceful valleys." },
-  { name: "Munnar", image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=1000", desc: "Rolling tea plantations & misty hills." },
-  { name: "Kodaikanal", image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1000", desc: "Princess of Hill Stations." },
+  { name: "Himachal", image: "/images/himachal.avif", desc: "Majestic mountains & peaceful valleys." },
+  { name: "Munnar", image: "/images/munnar.jpg", desc: "Rolling tea plantations & misty hills." },
+  { name: "Kodaikanal", image: "/images/kodaikanal.jpg", desc: "Princess of Hill Stations." },
   { name: "Coorg", image: "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?q=80&w=1000", desc: "Scotland of India & coffee estates." },
-  { name: "Ooty", image: "https://images.unsplash.com/photo-1590050752117-23a9d7fc0b5b?q=80&w=1000", desc: "Queen of Hill Stations." },
-  { name: "Kashmir", image: "https://images.unsplash.com/photo-1566833925222-d045c71e5820?q=80&w=1000", desc: "Paradise on Earth." },
-  { name: "Darjeeling", image: "https://images.unsplash.com/photo-1592323860589-913364ea4c6d?q=80&w=1000", desc: "Tea gardens & views of Kanchenjunga." },
+  { name: "Ooty", image: "/images/ooty.jpg", desc: "Queen of Hill Stations." },
+  { name: "Kashmir", image: "/images/kashmir.avif", desc: "Paradise on Earth." },
+  { name: "Darjeeling", image: "/images/darjeeling.jpg", desc: "Tea gardens & views of Kanchenjunga." },
 ];
 
 const internationalDestinations = [
@@ -56,7 +56,7 @@ const HoneymoonDestinations = () => {
             viewport={{ once: true }}
             className="flex items-center justify-center gap-2 mb-2"
           >
-            <Sparkles className="text-blue-500 w-5 h-5" />
+       
             <span className="text-blue-600 font-semibold tracking-widest uppercase text-sm">Romantic Escapes</span>
           </motion.div>
           

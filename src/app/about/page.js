@@ -14,7 +14,7 @@ const stats = [
 
 export default function AboutPage() {
     return (
-        <div className="pt-[72px] min-h-screen bg-white overflow-hidden">
+        <div className="min-h-screen bg-rose-50/30 overflow-hidden">
             {/* Hero Section */}
             <div className="relative h-[60vh] flex items-center justify-center">
                 <Image

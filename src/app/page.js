@@ -22,7 +22,7 @@ const highlights = [
     title: "The Art of Discovery", 
     desc: "Venture beyond the familiar. We curate paths less traveled for the curious soul.",
     color: "bg-blue-500",
-    image: "https://images.unsplash.com/photo-1476514525535-07fb2244d26f?q=80&w=1000"
+    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80"
   },
   { 
     icon: Heart, 
@@ -48,11 +48,36 @@ const highlights = [
 ];
 
 const destinations = [
-  { name: "Maldives", image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1000", price: "Starts ₹55,000", span: "md:col-span-2 md:row-span-2" },
-  { name: "Kerala", image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1000", price: "Starts ₹18,000", span: "md:col-span-1 md:row-span-1" },
-  { name: "Dubai", image: "https://images.unsplash.com/photo-1512453979798-5ea932a235c9?q=80&w=1000", price: "Starts ₹45,000", span: "md:col-span-1 md:row-span-1" },
-  { name: "Santorini", image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1000", price: "Starts ₹1,45,000", span: "md:col-span-1 md:row-span-2" },
-  { name: "Andaman", image: "https://images.unsplash.com/photo-1589330273594-fade1ee91647?q=80&w=1000", price: "Starts ₹25,000", span: "md:col-span-2 md:row-span-1" },
+  {
+    name: "Maldives",
+    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1000",
+    tag: "Luxury Honeymoon Escape",
+    span: "md:col-span-2 md:row-span-2",
+  },
+  {
+    name: "Kerala",
+    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1000",
+    tag: "Backwaters & Nature Retreat",
+    span: "md:col-span-1 md:row-span-1",
+  },
+  {
+    name: "Dubai",
+image: "https://images.unsplash.com/photo-1498496294664-d9372eb521f3?auto=format&fit=crop&w=1200&q=80",
+    tag: "Luxury Shopping & City Life",
+    span: "md:col-span-1 md:row-span-1",
+  },
+  {
+    name: "Santorini",
+    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=1000",
+    tag: "Romantic Island Views",
+    span: "md:col-span-1 md:row-span-2",
+  },
+  {
+    name: "Andaman",
+    image: "https://images.unsplash.com/photo-1589330273594-fade1ee91647?q=80&w=1000",
+    tag: "Pristine Beaches & Adventure",
+    span: "md:col-span-2 md:row-span-1",
+  },
 ];
 
 const testimonials = [
@@ -85,7 +110,7 @@ export default function Home() {
             className="object-cover brightness-[0.4] contrast-125 scale-110"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050B18]/40 via-transparent to-[#fcfcfd]" />
+          
         </motion.div>
 
         {/* Floating Atmospheric Particles */}
@@ -126,7 +151,7 @@ export default function Home() {
                   <ArrowRight className="ml-2 transform group-hover:translate-x-2 transition-transform" />
                 </Button>
                 <Button
-                  href="/contact"
+                  href="https://wa.me/+919629954774"
                   variant="outline"
                   size="xl"
                   className="rounded-full px-12 border-white/20 text-white hover:bg-white/10 backdrop-blur-md font-bold text-lg"
@@ -159,13 +184,13 @@ export default function Home() {
                </div>
                
                {/* Floating elements */}
-               <motion.div 
-                 animate={{ y: [0, -20, 0] }}
-                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                 className="absolute -top-10 -right-10 w-32 h-32 bg-sky-500/20 backdrop-blur-3xl rounded-full border border-white/10 flex items-center justify-center text-white"
-               >
-                 <Sparkles size={40} className="text-sky-300" />
-               </motion.div>
+<motion.div
+  animate={{ y: [0, -20, 0] }}
+  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+  className="absolute -top-10 -right-10 w-32 h-32 bg-sky-500/20 backdrop-blur-3xl rounded-full border border-white/10 flex items-center justify-center text-white"
+>
+  <Plane size={40} className="text-sky-300" />
+</motion.div>
             </motion.div>
           </div>
         </div>
@@ -282,7 +307,7 @@ export default function Home() {
                   </div>
                   <div className="p-4 md:p-6 bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/20 text-white flex flex-col items-center gap-1 group-hover:bg-sky-500 group-hover:border-sky-400 transition-all duration-500">
                     <span className="text-[10px] uppercase font-bold tracking-widest opacity-60">Fare</span>
-                    <span className="text-xl font-black">{dest.price.split(' ')[1]}</span>
+                    <span className="text-xl font-black">{dest.tag.split(' ')[1]}</span>
                   </div>
                 </div>
                 

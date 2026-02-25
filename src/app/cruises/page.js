@@ -16,8 +16,6 @@ const cruises = [
     {
         title: "Mediterranean Royal",
         route: "Barcelona - Rome - Athens",
-        duration: "7 Nights",
-        price: "Starts ₹1,45,000",
         image: "https://images.unsplash.com/photo-1548574505-5e239809ee19?q=80&w=1000",
         desc: "A journey through history on the most sophisticated vessel at sea. Explore Rome's ancient glory and Santorini's sunsets.",
         ports: ["Barcelona", "Rome", "Athens", "Santorini"],
@@ -26,9 +24,7 @@ const cruises = [
     {
         title: "Caribbean Majestic",
         route: "Miami - Bahamas - Cozumel",
-        duration: "5 Nights",
-        price: "Starts ₹85,000",
-        image: "https://images.unsplash.com/photo-1599640845513-534431836ea5?q=80&w=1000",
+        image: "/images/CaribbeanMajestic.webp",
         desc: "Tropical bliss meets high-end luxury. Enjoy private island access and world-class onboard spa treatments.",
         ports: ["Miami", "Nassau", "Cozumel", "Key West"],
         tag: "Trending"
@@ -36,9 +32,7 @@ const cruises = [
     {
         title: "Alaskan Grandeur",
         route: "Seattle - Juneau - Glacier Bay",
-        duration: "10 Nights",
-        price: "Starts ₹2,10,000",
-        image: "https://images.unsplash.com/photo-1518182170546-07fb614d9313?q=80&w=1000",
+        image: "/images/Alaskan Grandeur.jpg",
         desc: "Witness the raw power of nature from our observation decks. Five-star dining amidst spectacular icy landscapes.",
         ports: ["Seattle", "Juneau", "Skagway", "Victoria"],
         tag: "Luxury Plus"
@@ -120,11 +114,6 @@ export default function CruisesPage() {
                     </motion.div>
                 </div>
 
-                {/* Scroll Indicator */}
-                <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
-                  <span className="text-sky-300/30 text-xs font-bold tracking-widest uppercase rotate-90 origin-left ml-4 mb-12">Discover More</span>
-                  <div className="w-[1px] h-24 bg-gradient-to-t from-sky-400 to-transparent" />
-                </div>
             </div>
 
             {/* Signature Experiences - Glassmorphism Grid */}

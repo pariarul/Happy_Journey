@@ -3,253 +3,248 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent, useTransform } from "framer-motion";
-import { Menu, X, Phone, Globe, ChevronDown, MoveRight, Sparkles, MapPin, Navigation } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { 
+  Menu, X, Sparkles, Map, Compass, Globe, 
+  User, Send, Home, Info, Ship, Heart 
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Packages", href: "/packages" },
-    { name: "Honeymoon", href: "/honeymoon" },
-    { name: "Cruises", href: "/cruises" },
-    { name: "Weddings", href: "/wedding" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", href: "/", icon: Home },
+    { name: "Packages", href: "/packages", icon: Map },
+    { name: "Honeymoon", href: "/honeymoon", icon: Heart },
+    { name: "Cruises", href: "/cruises", icon: Ship },
+    { name: "Weddings", href: "/wedding", icon: Sparkles },
+    { name: "About", href: "/about", icon: Info },
+    { name: "Contact", href: "/contact", icon: Send },
 ];
 
 export function Navbar() {
-    const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [hidden, setHidden] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { scrollY } = useScroll();
     const pathname = usePathname();
 
-    // Check if current page has a dark hero
-    const hasDarkHero = ["/", "/packages", "/cruises", "/honeymoon"].includes(pathname);
+    const hasDarkHero = ["/", "/packages", "/cruises", "/honeymoon" , "/wedding", "/about", "/contact"].includes(pathname);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
-        const previous = scrollY.getPrevious() || 0;
         setIsScrolled(latest > 50);
-        setHidden(latest > previous && latest > 300 && !isOpen);
     });
 
     useEffect(() => {
-        setIsOpen(false);
+        setIsMenuOpen(false);
     }, [pathname]);
 
     const isTranslucent = !isScrolled && hasDarkHero;
 
     return (
         <>
-            <motion.header
-                initial={{ y: -100, opacity: 0 }}
-                animate={{ 
-                  y: hidden ? -120 : 0, 
-                  opacity: 1,
-                  scale: isScrolled ? 0.95 : 1
-                }}
-                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                className="fixed top-0 left-0 right-0 z-[100] flex justify-center pt-6 px-6 pointer-events-none"
-            >
-                {/* --- The Floating Island --- */}
-                <div className={cn(
-                    "pointer-events-auto flex items-center gap-2 px-3 py-2 rounded-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] shadow-2xl",
+            {/* --- DESKTOP: Minimalist Top Line --- */}
+            <motion.nav
+                initial={{ y: -100 }}
+                animate={{ y: 0 }}
+                className={cn(
+                    "fixed top-0 left-0 right-0 z-[100] hidden lg:block transition-all duration-700",
                     isScrolled 
-                      ? "bg-white/80 backdrop-blur-3xl border border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.1)]" 
-                      : isTranslucent 
-                        ? "bg-white/10 backdrop-blur-md border border-white/10 shadow-none" 
-                        : "bg-white border border-gray-100 shadow-xl"
-                )}>
-                    
-                    {/* Branded Notch */}
-                    <Link href="/" className="pl-4 pr-6 py-2 border-r border-gray-200/20 group">
+                      ? "bg-white/80 backdrop-blur-2xl py-3 border-b border-gray-100 shadow-sm" 
+                      : "bg-transparent py-6"
+                )}
+            >
+                <div className="container mx-auto px-10 flex items-center justify-between">
+                    {/* Elite Logo */}
+                    <Link href="/" className="flex items-center group">
                         <Image
                             src="/full_logo.png"
                             alt="Logo"
-                            width={140}
+                            width={160}
                             height={40}
                             className={cn(
-                              "h-7 w-auto object-contain transition-all duration-500 group-hover:scale-105",
+                              "h-18 w-auto object-contain transition-all duration-500",
                               isTranslucent ? "brightness-0 invert" : ""
                             )}
                         />
                     </Link>
 
-                    {/* Navigation - Inline Boutique */}
-                    <nav className="hidden lg:flex items-center gap-1 px-4">
-                        {navLinks.map((link) => {
-                            const isActive = pathname === link.href;
-                            return (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className={cn(
-                                        "relative px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-500",
-                                        isTranslucent ? "text-white" : "text-[#0A1128]",
-                                        isActive ? "opacity-100" : "opacity-40 hover:opacity-100"
-                                    )}
-                                >
-                                    <span className="relative z-10">{link.name}</span>
-                                    {isActive && (
-                                        <motion.div
-                                            layoutId="capsuleActive"
-                                            className={cn(
-                                              "absolute inset-0 rounded-full",
-                                              isTranslucent ? "bg-white/10" : "bg-[#0A1128]/5 shadow-sm"
-                                            )}
-                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                                        />
-                                    )}
-                                </Link>
-                            );
-                        })}
-                    </nav>
+                    {/* Minimalist Top Links */}
+                    <div className="flex items-center gap-10">
+                        {navLinks.slice(0, 7).map((link) => (
+                            <Link
+                                key={link.name}
+                                href={link.href}
+                                className={cn(
+                                    "text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-300 hover:text-sky-500",
+                                    isTranslucent ? "text-white/60" : "text-[#0A1128]/60",
+                                    pathname === link.href && (isTranslucent ? "text-white" : "text-[#0A1128]")
+                                )}
+                            >
+                                {link.name}
+                            </Link>
+                        ))}
+                    </div>
 
-                    {/* Action Hub */}
-                    <div className="flex items-center gap-2 ml-2">
+                    {/* Desk CTA */}
+                    <div className="flex items-center gap-6">
                         <Button
                           href="/contact"
                           className={cn(
-                              "hidden md:flex rounded-full px-6 py-5 text-[10px] font-black uppercase tracking-widest border-none transition-all duration-500",
-                              isScrolled 
-                                ? "bg-sky-500 text-white hover:bg-[#0A1128] shadow-sky-500/20" 
-                                : isTranslucent 
-                                  ? "bg-white text-black hover:bg-sky-400 hover:text-white" 
-                                  : "bg-[#0A1128] text-white hover:bg-sky-600 shadow-lg shadow-sky-500/10"
+                            "rounded-full px-8 py-5 text-[10px] font-black uppercase tracking-widest border-none transition-all duration-500 shadow-xl",
+                            isTranslucent 
+                              ? "bg-white text-black hover:bg-sky-400 hover:text-white" 
+                              : "bg-[#0A1128] text-white hover:bg-sky-600 shadow-sky-500/10"
                           )}
                         >
-                          Book Now
+                          Plan Trip
                         </Button>
-
-                        {/* Unique Toggle Orb */}
-                        <button
-                            onClick={() => setIsOpen(!isOpen)}
-                            className={cn(
-                                "flex items-center justify-center w-12 h-12 rounded-full transition-all duration-500 group relative overflow-hidden",
-                                isOpen 
-                                  ? "bg-sky-500 text-white scale-90" 
-                                  : isTranslucent 
-                                    ? "bg-white/20 text-white backdrop-blur-xl" 
-                                    : "bg-[#0A1128] text-white"
-                            )}
-                        >
-                            <div className="relative w-5 h-5">
-                                <span className={cn(
-                                  "absolute left-0 top-1 w-5 h-0.5 transition-all duration-500",
-                                  isOpen ? "rotate-45 translate-y-1.5 bg-white" : "bg-current"
-                                )} />
-                                <span className={cn(
-                                  "absolute left-0 bottom-1 w-3 h-0.5 transition-all duration-500 translate-x-1",
-                                  isOpen ? "-rotate-45 -translate-y-1.5 w-5 -translate-x-0 bg-white" : "bg-current"
-                                )} />
-                            </div>
-                        </button>
                     </div>
                 </div>
-            </motion.header>
+            </motion.nav>
 
-            {/* --- Magazine mobile Menu: Full Page Art --- */}
+            {/* --- MOBILE: The Horizon Dock (Bottom Fixed) --- */}
+            <div className="lg:hidden fixed bottom-8 left-0 right-0 z-[100] px-4 pointer-events-none">
+                <motion.div
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="mx-auto max-w-sm pointer-events-auto"
+                >
+                    <div className="bg-[#0A1128]/90 backdrop-blur-3xl rounded-[2.5rem] p-2 flex items-center justify-between border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+                        {/* Essential Dock Items */}
+                        <div className="flex items-center justify-around flex-1 px-4">
+                            {[navLinks[0], navLinks[1], navLinks[2], navLinks[3], navLinks[4], navLinks[5]].map((link) => {
+                                const isActive = pathname === link.href;
+                                return (
+                                    <Link
+                                        key={link.name}
+                                        href={link.href}
+                                        className={cn(
+                                            "p-4 rounded-2xl transition-all duration-300 relative group",
+                                            isActive ? "text-white" : "text-white/40"
+                                        )}
+                                    >
+                                        <link.icon size={22} className={cn("transition-transform", isActive && "scale-110")} />
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="dockNode"
+                                                className="absolute inset-0 bg-white/10 rounded-2xl -z-10"
+                                                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                            />
+                                        )}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+
+                        {/* Custom Menu Trigger */}
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="w-14 h-14 bg-sky-500 rounded-full flex items-center justify-center text-white shadow-lg transition-transform active:scale-90"
+                        >
+                            <AnimatePresence mode="wait">
+                                {isMenuOpen ? <X key="x" size={24} /> : <Menu key="m" size={24} />}
+                            </AnimatePresence>
+                        </button>
+                    </div>
+                </motion.div>
+            </div>
+
+            {/* --- MOBILE LOGO (Top Fixed Only for Brand) --- */}
+            <div className="lg:hidden fixed top-0 left-0 right-0 z-[90] p-6 flex justify-between items-center pointer-events-none">
+                <Link href="/" className="pointer-events-auto">
+                    <Image
+                        src="/full_logo.png"
+                        alt="Logo"
+                        width={120}
+                        height={30}
+                        className={cn(
+                          "h-6 w-auto object-contain transition-all duration-500",
+                          isTranslucent ? "brightness-0 invert" : ""
+                        )}
+                    />
+                </Link>
+            </div>
+
+            {/* --- CURTAIN MENU (Universal Overlay) --- */}
             <AnimatePresence>
-                {isOpen && (
+                {isMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 1.1, filter: "blur(20px)" }}
-                        animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                        exit={{ opacity: 0, scale: 0.95, filter: "blur(20px)" }}
-                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="fixed inset-0 bg-[#050B18] z-[90] flex flex-col p-6 md:p-12"
+                        initial={{ opacity: 0, clipPath: "circle(0% at 50% 100%)" }}
+                        animate={{ opacity: 1, clipPath: "circle(150% at 50% 100%)" }}
+                        exit={{ opacity: 0, clipPath: "circle(0% at 50% 100%)" }}
+                        transition={{ duration: 0.8, ease: [0.77, 0, 0.175, 1] }}
+                        className="fixed inset-0 bg-[#050B18] z-[95] flex flex-col pt-32 pb-40 px-10 overflow-y-auto"
                     >
-                        {/* Elegant Magazine-style Background Grid */}
-                        <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-                            <div className="absolute top-0 left-1/4 w-px h-full bg-white/20" />
-                            <div className="absolute top-0 left-2/4 w-px h-full bg-white/20" />
-                            <div className="absolute top-0 left-3/4 w-px h-full bg-white/20" />
-                        </div>
-
-                        {/* Top Branding Section */}
-                        <div className="relative z-10 flex justify-between items-start mb-20">
-                            <div className="space-y-4">
-                                <div className="text-sky-500 font-black uppercase tracking-[0.5em] text-[10px]">Explorer&apos;s Journal</div>
-                                <h3 className="text-white text-3xl font-serif italic">Discover the Extraordinary</h3>
-                            </div>
-                            <div className="hidden lg:block text-right">
-                                <div className="text-white/40 text-[10px] font-black uppercase tracking-widest mb-2">Since 2018</div>
-                                <div className="text-white/20 text-4xl font-serif">Happy Journey</div>
-                            </div>
-                        </div>
-
-                        {/* Main Menu Links - Asymmetrical Magazine Layout */}
-                        <div className="relative z-10 flex-1 flex flex-col md:flex-row gap-20 items-end">
-                            <div className="flex-1 flex flex-col gap-6 w-full">
+                        <div className="container mx-auto max-w-2xl space-y-12">
+                            <div className="text-sky-500 font-black uppercase tracking-[0.5em] text-[10px] text-center">Global Navigation</div>
+                            
+                            <nav className="flex flex-col gap-4">
                                 {navLinks.map((link, i) => (
                                     <motion.div
                                         key={link.name}
-                                        initial={{ x: -100, opacity: 0 }}
-                                        animate={{ x: 0, opacity: 1 }}
-                                        transition={{ delay: i * 0.1, duration: 0.8 }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: i * 0.05 }}
                                     >
                                         <Link
                                             href={link.href}
-                                            className="group inline-flex items-baseline gap-8"
-                                            onClick={() => setIsOpen(false)}
+                                            className={cn(
+                                                "group flex items-center justify-between py-4 border-b border-white/5 transition-all",
+                                                pathname === link.href ? "text-white" : "text-white/20 hover:text-white/80"
+                                            )}
                                         >
-                                            <span className="text-sky-500 font-serif italic text-2xl md:text-4xl opacity-40 group-hover:opacity-100 transition-opacity">
-                                              {String(i + 1).padStart(2, '0')}
-                                            </span>
-                                            <h2 className={cn(
-                                                "text-6xl md:text-9xl font-bold font-serif tracking-tighter transition-all duration-700",
-                                                pathname === link.href ? "text-white" : "text-white/10 hover:text-white/50"
-                                            )}>
+                                            <span className="text-4xl md:text-6xl font-serif font-bold italic group-hover:pl-4 transition-all duration-500">
                                                 {link.name}
-                                            </h2>
+                                            </span>
+                                            <MoveRight className="opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500 text-sky-400" />
                                         </Link>
                                     </motion.div>
                                 ))}
-                            </div>
+                            </nav>
 
-                            {/* Featured Mobile Menu Image/Card */}
-                            <div className="hidden lg:block w-1/4 mb-10 group">
-                                <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-3xl">
-                                    <Image 
-                                      src="https://images.unsplash.com/photo-1540339832862-437913ca01b7?q=80&w=1000" 
-                                      fill 
-                                      className="object-cover transition-transform duration-[3000ms] group-hover:scale-110" 
-                                      alt="Featured" 
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                                    <div className="absolute bottom-8 left-8 right-8">
-                                        <div className="flex items-center gap-2 text-sky-400 font-black uppercase text-[10px] tracking-widest mb-2">
-                                          <Sparkles size={12} /> Seasonal Arrival
-                                        </div>
-                                        <h4 className="text-white text-2xl font-bold font-serif">Swiss Alp Retreats</h4>
+                            <div className="pt-12 grid grid-cols-1 md:grid-cols-2 gap-12 text-center md:text-left">
+                                <div className="space-y-4">
+                                    <div className="text-sky-400 font-black text-[10px] uppercase tracking-widest">Connect</div>
+                                    <div className="flex flex-col gap-2 text-white/50 text-sm">
+                                        <a href="tel:+919876543210" className="hover:text-white transition-colors">+91 98765 43210</a>
+                                        <a href="mailto:explore@happyjourney.com" className="hover:text-white transition-colors">explore@happyjourney.com</a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* Bottom Footer Section */}
-                        <div className="relative z-10 mt-20 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between gap-12 text-white/40">
-                            <div className="flex gap-12">
-                                <div className="space-y-2">
-                                    <div className="text-[10px] font-black uppercase text-sky-500 tracking-widest">Inquiries</div>
-                                    <p className="text-white text-sm">curate@happyjourney.travel</p>
+                                <div className="space-y-6">
+                                    <div className="text-sky-400 font-black text-[10px] uppercase tracking-widest">Social</div>
+                                    <div className="flex justify-center md:justify-start gap-8 text-[10px] font-black uppercase tracking-widest text-white/30">
+                                        <a href="#" className="hover:text-white transition-all">Instagram</a>
+                                        <a href="#" className="hover:text-white transition-all">Twitter</a>
+                                    </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <div className="text-[10px] font-black uppercase text-sky-500 tracking-widest">Concierge</div>
-                                    <p className="text-white text-sm">+91 98765 43210</p>
-                                </div>
-                            </div>
-                            
-                            <div className="flex items-end gap-6 text-[10px] font-black uppercase tracking-[0.2em]">
-                                <a href="#" className="hover:text-white transition-colors">Instagram</a>
-                                <a href="#" className="hover:text-white transition-colors">Pinterest</a>
-                                <a href="#" className="hover:text-white transition-colors">Vimeo</a>
                             </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
+
+            {/* Helper Component for arrows in menu since I forgot to import it but it's used in the logic below */}
+            {/* Actually, it's defined in lucide-react, I just need to make sure it's in the imports list */}
         </>
+    );
+}
+
+function MoveRight({ className }) {
+    return (
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            className={className}
+        >
+            <path d="M18 8L22 12L18 16" />
+            <path d="M2 12H22" />
+        </svg>
     );
 }

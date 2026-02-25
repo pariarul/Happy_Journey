@@ -88,7 +88,13 @@ export function Footer() {
                             <li className="flex items-start gap-3">
                                 <MapPin className="text-secondary-sky shrink-0 mt-1" size={18} />
                                 <span className="text-gray-400 text-sm">
-                                    123 Travel Tower, Business District, <br /> New Delhi, India 110001
+                                  Tiruneveli Office :  C 36 , Azad Raod Puthumanai Kothpa Pallivasal Complex Melapalayam  <br /> Tiruneveli - 628002 , Tamilnadu, India
+                                </span>
+                            </li>
+                               <li className="flex items-start gap-3">
+                                <MapPin className="text-secondary-sky shrink-0 mt-1" size={18} />
+                                <span className="text-gray-400 text-sm">
+                                  Chennai Office : 40/75, Suprtant Road Mayor Ramananathan Salai Chetpet  <br /> Chennai - 600031 , Tamilnadu, India
                                 </span>
                             </li>
                             <li className="flex items-center gap-3">
