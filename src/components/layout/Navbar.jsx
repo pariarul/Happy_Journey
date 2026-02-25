@@ -14,11 +14,11 @@ import Image from "next/image";
 
 const navLinks = [
     { name: "Home", href: "/", icon: Home },
+    { name: "About", href: "/about", icon: Info },
     { name: "Packages", href: "/packages", icon: Map },
     { name: "Honeymoon", href: "/honeymoon", icon: Heart },
     { name: "Cruises", href: "/cruises", icon: Ship },
     { name: "Weddings", href: "/wedding", icon: Sparkles },
-    { name: "About", href: "/about", icon: Info },
     { name: "Contact", href: "/contact", icon: Send },
 ];
 
@@ -112,7 +112,7 @@ export function Navbar() {
                     <div className="bg-[#0A1128]/90 backdrop-blur-3xl rounded-[2.5rem] p-2 flex items-center justify-between border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
                         {/* Essential Dock Items */}
                         <div className="flex items-center justify-around flex-1 px-4">
-                            {[navLinks[0], navLinks[1], navLinks[2], navLinks[3], navLinks[4], navLinks[5]].map((link) => {
+                            {[navLinks[0], navLinks[1], navLinks[2], navLinks[3], navLinks[5], navLinks[6]].map((link) => {
                                 const isActive = pathname === link.href;
                                 return (
                                     <Link
@@ -136,15 +136,7 @@ export function Navbar() {
                             })}
                         </div>
 
-                        {/* Custom Menu Trigger */}
-                        <button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="w-14 h-14 bg-sky-500 rounded-full flex items-center justify-center text-white shadow-lg transition-transform active:scale-90"
-                        >
-                            <AnimatePresence mode="wait">
-                                {isMenuOpen ? <X key="x" size={24} /> : <Menu key="m" size={24} />}
-                            </AnimatePresence>
-                        </button>
+
                     </div>
                 </motion.div>
             </div>
@@ -158,7 +150,7 @@ export function Navbar() {
                         width={120}
                         height={30}
                         className={cn(
-                          "h-6 w-auto object-contain transition-all duration-500",
+                          "h-14 w-auto object-contain transition-all duration-500",
                           isTranslucent ? "brightness-0 invert" : ""
                         )}
                     />

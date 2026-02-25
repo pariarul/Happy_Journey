@@ -11,30 +11,64 @@ const domesticDestinations = [
   { name: "Goa", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1000", desc: "Sun-kissed beaches & vibrant nightlife." },
   { name: "Kerala", image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?q=80&w=1000", desc: "Serene backwaters & lush greenery." },
   { name: "Shimla", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?q=80&w=1000", desc: "Quaint colonial charm & mountain peaks." },
-  { name: "Kulu Manali", image: "/images/kullumanali.jpg", desc: "Adventure and romance in the Himalayas." },
+  { name: "Kulu Manali", image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1000", desc: "Adventure and romance in the Himalayas." },
   { name: "Andaman", image: "https://images.unsplash.com/photo-1589330273594-fade1ee91647?q=80&w=1000", desc: "Crystal clear waters & exotic islands." },
-  { name: "Himachal", image: "/images/himachal.avif", desc: "Majestic mountains & peaceful valleys." },
-  { name: "Munnar", image: "/images/munnar.jpg", desc: "Rolling tea plantations & misty hills." },
-  { name: "Kodaikanal", image: "/images/kodaikanal.jpg", desc: "Princess of Hill Stations." },
-  { name: "Coorg", image: "https://images.unsplash.com/photo-1580137189272-c9379f8864fd?q=80&w=1000", desc: "Scotland of India & coffee estates." },
-  { name: "Ooty", image: "/images/ooty.jpg", desc: "Queen of Hill Stations." },
-  { name: "Kashmir", image: "/images/kashmir.avif", desc: "Paradise on Earth." },
-  { name: "Darjeeling", image: "/images/darjeeling.jpg", desc: "Tea gardens & views of Kanchenjunga." },
+   { 
+    name: "Himachal", 
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1000&auto=format&fit=crop", 
+    desc: "Majestic mountains & peaceful valleys." 
+  },
+
+  { 
+    name: "Munnar", 
+    image: "https://images.unsplash.com/photo-1593693411515-c20261bcad6e?q=80&w=1000&auto=format&fit=crop", 
+    desc: "Rolling tea plantations & misty hills." 
+  },
+
+  { 
+    name: "Kodaikanal", 
+    image: "https://images.unsplash.com/photo-1622308644420-b20142dc993c?q=80&w=1000&auto=format&fit=crop", 
+    desc: "Princess of Hill Stations." 
+  },
+
+  { 
+    name: "Coorg", 
+    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?q=80&w=1000&auto=format&fit=crop", 
+    desc: "Scotland of India & coffee estates." 
+  },
+
+  { 
+    name: "Ooty", 
+    image: "/images/ooty.jpg", 
+    desc: "Queen of Hill Stations." 
+  },
+
+  { 
+    name: "Kashmir", 
+    image: "https://images.unsplash.com/photo-1598091383021-15ddea10925d?q=80&w=1000&auto=format&fit=crop", 
+    desc: "Paradise on Earth." 
+  },
+
+{
+  name: "Darjeeling",
+  image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1000&auto=format&fit=crop",
+  desc: "Tea gardens & Himalayan mountain views."
+}
 ];
 
 const internationalDestinations = [
   { name: "Maldives", image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1000", desc: "Overwater bungalows & turquoise lagoons." },
   { name: "Bali", image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1000", desc: "Spiritual retreats & tropical paradise." },
-  { name: "Mauritius", image: "https://images.unsplash.com/photo-1589979485637-259746f3910f?q=80&w=1000", desc: "Sapphire-blue waters & white sandy beaches." },
+  { name: "Mauritius",image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000", desc: "Sapphire-blue waters & white sandy beaches." },
   { name: "Phuket", image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?q=80&w=1000", desc: "Vibrant nightlife & stunning bays." },
   { name: "Switzerland", image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=1000", desc: "Alpine magic & scenic train rides." },
   { name: "Seychelles", image: "https://images.unsplash.com/photo-1531737212413-667205e1cda7?q=80&w=1000", desc: "Untouched islands & unique biodiversity." },
   { name: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1000", desc: "The City of Love & lights." },
   { name: "Italy", image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=1000", desc: "Romantic canals & historic landscapes." },
   { name: "Thailand", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1000", desc: "Golden temples & tropical hospitality." },
-  { name: "Dubai", image: "https://images.unsplash.com/photo-1512453979798-5ea932a235c9?q=80&w=1000", desc: "Modern luxury & desert adventures." },
+  { name: "Dubai", image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000", desc: "Modern luxury & desert adventures." },
   { name: "Sri Lanka", image: "https://images.unsplash.com/photo-1546708973-b339540b5162?q=80&w=1000", desc: "Teardrop of India & diverse landscapes." },
-  { name: "Singapore", image: "https://images.unsplash.com/photo-1525625239912-4ebca2d2cc78?q=80&w=1000", desc: "Futuristic gardens & urban marvels." },
+  { name: "Singapore",  image: "https://images.unsplash.com/photo-1508964942454-1a56651d54ac?q=80&w=1000", desc: "Futuristic gardens & urban marvels." },
 ];
 
 const HoneymoonDestinations = () => {

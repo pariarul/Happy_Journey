@@ -3,54 +3,94 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, MapPin, ArrowRight, Plane, Map, Star, Globe, Sparkles } from "lucide-react";
-import Image from "next/image";
+
 
 const internationalPackages = [
-    { id: 1, place: "Dubai", duration: "5 Days / 4 Nights", image: "/images/Dubai.jpg", rating: 4.8 },
-    { id: 2, place: "Thailand", duration: "4 Days / 3 Nights",  image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1000", rating: 4.7 },
-    { id: 3, place: "Singapore", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1000", rating: 4.9 },
-    { id: 4, place: "Malaysia", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1000", rating: 4.6 },
-    { id: 5, place: "Maldives", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1000", rating: 5.0 },
-    { id: 6, place: "Bali", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1000", rating: 4.8 },
-    { id: 7, place: "Mauritius", duration: "5 Days / 4 Nights", image: "/images/Mauritius.jpg", rating: 4.7 },
-    { id: 8, place: "Switzerland", duration: "7 Days / 6 Nights", image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=1000", rating: 4.9 },
-    { id: 9, place: "Europe", duration: "14 Days / 13 Nights", image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1000", rating: 4.9 },
-    { id: 10, place: "Vietnam & Cambodia", duration: "10 Days / 9 Nights", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=1000", rating: 4.6 },
-    { id: 11, place: "China", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=1000", rating: 4.4 },
-    { id: 12, place: "Japan", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1000", rating: 4.9 },
-    { id: 13, place: "Cambodia", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1000", rating: 4.5 },
-    { id: 14, place: "Sri Lanka", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1588258524675-55d6560bc931?q=80&w=1000", rating: 4.6 },
-    { id: 15, place: "Vietnam", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=1000", rating: 4.7 },
-    { id: 16, place: "Hong Kong", duration: "6 Days / 5 Nights", image:"https://images.unsplash.com/photo-1534349762230-e738198f3fa3?q=80&w=1" , rating : 4.5},
-    { id : 17, place : "Nepal" , duration : "6 Days / 5 Nights" , image : "/images/nepal.jpg" , rating : 4.7},
-    { id : 18, place : "Australia" , duration : "13 Days / 12 Nights" , image : "/images/australia.jpg" , rating : 4.8},
-    { id: 19, place: "Singapore & Kuala Lumpur", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1586720498701-09653894e634?q=80&w=1000", rating: 4.7 },
+  { id: 1, place: "Dubai", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1000", rating: 4.8 },
+
+  { id: 2, place: "Thailand", duration: "4 Days / 3 Nights", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=1000", rating: 4.7 },
+
+  { id: 3, place: "Singapore", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1496939376851-89342e90adcd?q=80&w=1000", rating: 4.9 },
+
+  { id: 4, place: "Malaysia", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1000", rating: 4.6 },
+
+  { id: 5, place: "Maldives", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1000", rating: 5.0 },
+
+  { id: 6, place: "Bali", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1000", rating: 4.8 },
+
+  { id: 7, place: "Mauritius", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1000", rating: 4.7 },
+
+  { id: 8, place: "Switzerland", duration: "7 Days / 6 Nights", image: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=1000", rating: 4.9 },
+
+  { id: 9, place: "Europe", duration: "14 Days / 13 Nights", image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1000", rating: 4.9 },
+
+  { id: 10, place: "Vietnam & Cambodia", duration: "10 Days / 9 Nights", image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?q=80&w=1000", rating: 4.6 },
+
+  { id: 11, place: "China", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=1000", rating: 4.4 },
+
+  { id: 12, place: "Japan", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=1000", rating: 4.9 },
+
+  { id: 13, place: "Cambodia", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1000", rating: 4.5 },
+
+  { id: 14, place: "Sri Lanka", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=1000&auto=format&fit=crop", rating: 4.6 },
+
+  { id: 15, place: "Vietnam", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?q=80&w=1000", rating: 4.7 },
+
+  { id: 16, place: "Hong Kong", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=1000", rating: 4.5 },
+
+  { id: 17, place: "Nepal", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1000", rating: 4.7 },
+
+  { id: 18, place: "Australia", duration: "13 Days / 12 Nights", image: "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?q=80&w=1000", rating: 4.8 },
+
+  { id: 19, place: "Singapore & Kuala Lumpur", duration: "6 Days / 5 Nights",  image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=1000", rating: 4.7 },
 ];
 
 const domesticPackages = [
-    { id: 1, place: "Ooty & Masinagudi", duration: "4 Days / 3 Nights", image: "https://images.unsplash.com/photo-1582239455799-73fb4b9713c7?q=80&w=1000", rating: 4.6 },
-    { id: 2, place: "Coorg & Mysore", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1590445772390-333034981d7f?q=80&w=1000", rating: 4.7 },
-    { id: 3, place: "Kodaikanal", duration: "2 Days / 1 Night", image: "https://images.unsplash.com/photo-1549643276-8e503ae0c7b4?q=80&w=1000", rating: 4.5 },
-    { id: 4, place: "Munnar", duration: "4 Days / 3 Nights", image: "https://images.unsplash.com/photo-1629810452367-ffc2f5d962c6?q=80&w=1000", rating: 4.8 },
-    { id: 5, place: "Wayanad", duration: "3 Days / 2 Nights", image: "https://images.unsplash.com/photo-1596328249627-ef31f13d8d69?q=80&w=1000", rating: 4.6 },
-    { id: 6, place: "Varkala", duration: "3 Days / 2 Nights", image: "https://images.unsplash.com/photo-1590050752117-238cb0fb79b1?q=80&w=1000", rating: 4.7 },
-    { id: 8, place: "Vagamon", duration: "3 Days / 2 Nights", image: "https://images.unsplash.com/photo-1626082268759-e93570262194?q=80&w=1000", rating: 4.4 },
-    { id: 9, place: "Yercaud", duration: "2 Days / 1 Night", image: "https://images.unsplash.com/photo-1606210123554-46c59508092f?q=80&w=1000", rating: 4.3 },
-    { id: 10, place: "Goa", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1000", rating: 4.9 },
-    { id: 11, place: "Andaman", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1589330273594-fade1ee91647?q=80&w=1000", rating: 5.0 },
-    { id: 12, place: "Lakshadweep", duration: "4 Days / 3 Nights", image: "https://images.unsplash.com/photo-1616744834898-35606d8848f9?q=80&w=1000", rating: 4.8 },
-    { id: 13, place: "Agra & Delhi", duration: "4 Days / 3 Nights", image: "https://images.unsplash.com/photo-1564507592333-c60657eea523?q=80&w=1000", rating: 4.7 },
-    { id: 14, place: "Rajasthan Grand", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1568288599427-14e3204975e5?q=80&w=1000", rating: 4.8 },
-    { id: 15, place: "Jammu & Kashmir", duration: "7 Days / 6 Nights", image:"https://images.unsplash.com/photo-1595846519845-68e298c2edd8?q=8" , rating : 4.9},
-    { id : 16, place : "Kullu Manali" , duration : "5 Days / 4 Nights" , image : "/images/kullumanali.jpg" , rating : 4.7},
-    { id : 17, place : "Shimla & Manali" , duration : "6 Days / 5 Nights" , image : "/images/shimlamanali.jpg" , rating : 4.7},
-    { id: 18, place: "Manali & Shimla", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1580584551108-7dfd42d3ad33?q=80&w=1000", rating: 4.6 },
-    { id: 19, place: "Ladakh", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?q=80&w=1000", rating: 4.9 },
-    { id: 20, place: "Maharashtra", duration: "6 Days / 5 Nights", image: "https://images.unsplash.com/photo-1552596856-11f26f23ee97?q=80&w=1000", rating: 4.4 },
-    { id: 21, place: "Mumbai & Lonavala", duration: "4 Days / 3 Nights", image: "https://images.unsplash.com/photo-1579969248231-c4d6f8393c83?q=80&w=1000", rating: 4.5 },
-    { id: 22, place: "Ancient Varanasi", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1561361513-35bdcd2576a2?q=80&w=1000", rating: 4.8 },
-    { id: 23, place: "Ayodhya", duration: "3 Days / 2 Nights", image: "https://images.unsplash.com/photo-1634998705668-3e4ae05d761d?q=80&w=1000", rating: 4.7 },
-    { id: 24, place: "Gangtok & Darjeeling", duration: "5 Days / 4 Nights", image: "https://images.unsplash.com/photo-1626017058864-1c2514d3f2ec?q=80&w=1000", rating: 4.6 },
+{ id: 1, place: "Ooty & Masinagudi", duration: "4 Days / 3 Nights", image: "https://picsum.photos/seed/ooty-hills-tea/1000/700", rating: 4.6 },
+
+{ id: 2, place: "Coorg & Mysore", duration: "5 Days / 4 Nights", image: "https://picsum.photos/seed/coorg-coffee-estate/1000/700", rating: 4.7 },
+
+{ id: 3, place: "Kodaikanal", duration: "2 Days / 1 Night", image: "https://picsum.photos/seed/kodaikanal-lake-mist/1000/700", rating: 4.5 },
+
+{ id: 4, place: "Munnar", duration: "4 Days / 3 Nights", image: "https://picsum.photos/seed/munnar-tea-gardens/1000/700", rating: 4.8 },
+
+{ id: 5, place: "Wayanad", duration: "3 Days / 2 Nights", image: "https://picsum.photos/seed/wayanad-forest-waterfall/1000/700", rating: 4.6 },
+
+{ id: 6, place: "Varkala", duration: "3 Days / 2 Nights", image: "https://picsum.photos/seed/varkala-cliff-beach/1000/700", rating: 4.7 },
+
+{ id: 7, place: "Vagamon", duration: "3 Days / 2 Nights", image: "https://picsum.photos/seed/vagamon-meadows/1000/700", rating: 4.4 },
+
+{ id: 8, place: "Yercaud", duration: "2 Days / 1 Night", image: "https://picsum.photos/seed/yercaud-hills-lake/1000/700", rating: 4.3 },
+
+{ id: 9, place: "Goa", duration: "5 Days / 4 Nights", image: "https://picsum.photos/seed/goa-beach-sunset/1000/700", rating: 4.9 },
+
+{ id: 10, place: "Andaman", duration: "6 Days / 5 Nights", image: "https://picsum.photos/seed/andaman-island-bluewater/1000/700", rating: 5.0 },
+
+{ id: 11, place: "Lakshadweep", duration: "4 Days / 3 Nights", image: "https://picsum.photos/seed/lakshadweep-lagoon/1000/700", rating: 4.8 },
+
+{ id: 12, place: "Agra & Delhi", duration: "4 Days / 3 Nights", image: "https://picsum.photos/seed/tajmahal-delhi-monument/1000/700", rating: 4.7 },
+
+{ id: 13, place: "Rajasthan Grand", duration: "5 Days / 4 Nights", image: "https://picsum.photos/seed/rajasthan-palace-desert/1000/700", rating: 4.8 },
+
+{ id: 14, place: "Jammu & Kashmir", duration: "7 Days / 6 Nights", image: "https://picsum.photos/seed/kashmir-snow-mountains/1000/700", rating: 4.9 },
+
+{ id: 15, place: "Kullu Manali", duration: "5 Days / 4 Nights", image: "https://picsum.photos/seed/manali-snow-mountains/1000/700", rating: 4.7 },
+
+{ id: 16, place: "Shimla & Manali", duration: "6 Days / 5 Nights", image: "https://picsum.photos/seed/shimla-hillstation/1000/700", rating: 4.7 },
+
+{ id: 17, place: "Manali & Shimla", duration: "6 Days / 5 Nights", image: "https://picsum.photos/seed/himachal-mountains/1000/700", rating: 4.6 },
+
+{ id: 18, place: "Ladakh", duration: "5 Days / 4 Nights", image: "https://picsum.photos/seed/ladakh-mountains-lake/1000/700", rating: 4.9 },
+
+{ id: 19, place: "Maharashtra", duration: "6 Days / 5 Nights", image: "https://picsum.photos/seed/maharashtra-fort-hills/1000/700", rating: 4.4 },
+
+{ id: 20, place: "Mumbai & Lonavala", duration: "4 Days / 3 Nights", image: "https://picsum.photos/seed/mumbai-city-lonavala/1000/700", rating: 4.5 },
+
+{ id: 21, place: "Ancient Varanasi", duration: "5 Days / 4 Nights", image: "https://picsum.photos/seed/varanasi-ghats/1000/700", rating: 4.8 },
+
+{ id: 22, place: "Ayodhya", duration: "3 Days / 2 Nights", image: "https://picsum.photos/seed/ayodhya-temple/1000/700", rating: 4.7 },
+
+{ id: 23, place: "Gangtok & Darjeeling", duration: "5 Days / 4 Nights", image: "https://picsum.photos/seed/darjeeling-tea-hills/1000/700", rating: 4.6 }
 ];
 
 const container = {
@@ -92,7 +132,7 @@ export default function LocationList() {
                           whileInView={{ opacity: 1, x: 0 }}
                           className="flex items-center gap-2 text-sky-500 font-black uppercase tracking-[0.2em] text-xs"
                         >
-                          <Sparkles size={16} />
+                          
                           <span>Filter Your Adventure</span>
                         </motion.div>
                         <h2 className="text-4xl md:text-5xl font-bold font-serif text-[#0A1128]">
@@ -170,10 +210,9 @@ export default function LocationList() {
                                 >
                                     {/* Image with Parallax-like effect */}
                                     <div className="relative h-64 overflow-hidden">
-                                        <Image
+                                        <img
                                             src={pkg.image}
                                             alt={pkg.place}
-                                            fill
                                             className="object-cover transition-transform duration-[1500ms] group-hover:scale-125"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-700"></div>

@@ -2,15 +2,24 @@
 
 import Link from "next/link";
 import { Facebook, Instagram, Twitter, MapPin, Phone, Mail, Linkedin } from "lucide-react";
+import Image from "next/image";
 
 export function Footer() {
     return (
         <footer className="bg-gray-900 text-white pt-16 pb-8">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                    {/* Company Info */}
+                    {/* Company Logo */}
                     <div className="space-y-4">
-                        <h2 className="text-2xl font-bold font-heading text-white">HappyJourney</h2>
+                        <Link href="/" className="inline-block">
+                            <Image
+                                src="/full_logo.png"
+                                alt="HappyJourney Logo"
+                                width={150}
+                                height={40}
+                                className="object-contain"
+                            />
+                        </Link>
                         <p className="text-gray-400 text-sm leading-relaxed">
                             Your trusted partner for creating unforgettable travel memories. From luxury honeymoons to adventurous expeditions, we make every journey special.
                         </p>
@@ -88,13 +97,13 @@ export function Footer() {
                             <li className="flex items-start gap-3">
                                 <MapPin className="text-secondary-sky shrink-0 mt-1" size={18} />
                                 <span className="text-gray-400 text-sm">
-                                  Tiruneveli Office :  C 36 , Azad Raod Puthumanai Kothpa Pallivasal Complex Melapalayam  <br /> Tiruneveli - 628002 , Tamilnadu, India
+                                  Tiruneveli Office : C 36, Azad Raod Puthumanai Kothpa Pallivasal Complex Melapalayam <br /> Tiruneveli - 628002, Tamilnadu, India
                                 </span>
                             </li>
-                               <li className="flex items-start gap-3">
+                            <li className="flex items-start gap-3">
                                 <MapPin className="text-secondary-sky shrink-0 mt-1" size={18} />
                                 <span className="text-gray-400 text-sm">
-                                  Chennai Office : 40/75, Suprtant Road Mayor Ramananathan Salai Chetpet  <br /> Chennai - 600031 , Tamilnadu, India
+                                  Chennai Office : 40/75, Suprtant Road Mayor Ramananathan Salai Chetpet <br /> Chennai - 600031, Tamilnadu, India
                                 </span>
                             </li>
                             <li className="flex items-center gap-3">

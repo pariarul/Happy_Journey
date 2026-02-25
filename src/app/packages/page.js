@@ -34,7 +34,7 @@ export default function PackagesPage() {
                     />
                 </div>
 
-                <div className="relative z-10 text-center text-white px-4 max-w-6xl space-y-8">
+                <div className="relative z-10 text-center text-white mt-20 px-4 max-w-6xl space-y-8">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
