@@ -80,7 +80,7 @@ export default function ContactPage() {
                 />
                 <InfoItem
                   icon={Phone}
-                  title="+91 98765 43210"
+                  title="+91 9786190004"
                   text="Mon – Sat, 9am – 7pm"
                 />
                 <InfoItem
